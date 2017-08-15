@@ -1,4 +1,4 @@
-package br.com.integrador.negocio;
+package br.ufrn.imd.lojaRapida.negocio;
 
 public class DocumentoService {
 

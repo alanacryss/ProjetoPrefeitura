@@ -1,4 +1,4 @@
-package br.com.integrador.controller;
+package br.ufrn.imd.lojaRapida.controle;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

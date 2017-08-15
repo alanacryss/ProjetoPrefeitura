@@ -27,7 +27,7 @@
 <h:body>
 
 	<div class="container">
-		<div class="row" align="center">
+		<div class="row">
 			<h3>Cadastro de usuário</h3>
 		</div>
 
@@ -63,10 +63,10 @@
 							<h:inputHidden />
 							<div class="row">
 								<div class="col s2">
-									<p:commandButton value="Login" />
+									<p:commandButton value="Cancelar" />
 								</div>
 								<div class="col s2 offset-s6">
-									<p:commandButton value="Cadastrar" />
+									<p:commandButton value="Cadastrar" action="#{usuarioMBean.salvarUsuario()}" />
 								</div>
 							</div>
 						</h:form>
@@ -76,64 +76,6 @@
 		</div>
 
 	</div>
-
-<!-- 	<div class="container"> -->
-<!-- 		<div class="row"> -->
-<!-- 			<div class="col s6 offset-s3"> -->
-<!-- 				<h3>Cadastro de Usuário</h3> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 		<form class="col s12" action="#{usuarioMBean.salvarUsuario()}"> -->
-<!-- 			<div class="row"> -->
-<!-- 				<div class="card col s12"> -->
-<!-- 					<div class="card-content"> -->
-<!-- 						<div class="row"> -->
-<!-- 							<div class="input-field col s12"> -->
-<!-- 								<input id="first_name" type="text" class="validate" value="#{usuario.nome}" /> <label -->
-<!-- 									class="active" for="first_name">Nome</label> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-
-<!-- 						<div class="row"> -->
-<!-- 							<div class="input-field col s6"> -->
-<!-- 								<input id="password" type="password" class="validate" value="#{usuario.senha}" /> <label -->
-<!-- 									class="active" for="password">Senha</label> -->
-<!-- 							</div> -->
-<!-- 							<div class="input-field col s6"> -->
-<!-- 								<input id="password" type="password" class="validate" value="#{usuario.confirmSenha}" /> <label -->
-<!-- 									class="active" for="password">Confirme a senha</label> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-
-<!-- 						<div class="row"> -->
-<!-- 							<div class="input-field col s6"> -->
-<!-- 								<input id="email" type="email" class="validate" value="#{usuario.email}" /> <label -->
-<!-- 									class="active" for="email">Email</label> -->
-<!-- 							</div> -->
-<!-- 							<div class="input-field col s6"> -->
-<!-- 								<input type="text" class="validate" value="#{usuario.cargo}" /> <label class="active" -->
-<!-- 									for="cargo">Cargo</label> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 						<div class="row"> -->
-<!-- 							<div class="input-field col s6"> -->
-<!-- 								<input type="text" class="validate" value="#{usuario.setor}" /> <label class="active" -->
-<!-- 									for="setor">Setor</label> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="row"> -->
-<!-- 				<div class="col s2"> -->
-<!-- 					<a href="../login/indexLogin.xhtml" class="waves-effect waves-light btn orange lighten-2">Cancelar</a> -->
-<!-- 				</div> -->
-<!-- 				<div class="col s2 offset-s8"> -->
-<!-- 					<a href="../login/indexLogin.xhtml" class="waves-effect waves-light btn">Cadastrar</a> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</form> -->
-<!-- 	</div> -->
 
 </h:body>
 

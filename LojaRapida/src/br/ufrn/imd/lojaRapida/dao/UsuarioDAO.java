@@ -1,9 +1,9 @@
-package br.com.integrador.dao;
+package br.ufrn.imd.lojaRapida.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.integrador.dominio.Usuario;
+import br.ufrn.imd.lojaRapida.dominio.Usuario;
 
 public class UsuarioDAO extends GenericDAO<Usuario> {
 

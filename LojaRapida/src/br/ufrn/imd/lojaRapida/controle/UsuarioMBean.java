@@ -1,9 +1,9 @@
-package br.com.integrador.controller;
+package br.ufrn.imd.lojaRapida.controle;
 
 import javax.faces.bean.ManagedBean;
 
-import br.com.integrador.dominio.Usuario;
-import br.com.integrador.negocio.CrudService;
+import br.ufrn.imd.lojaRapida.dominio.Usuario;
+import br.ufrn.imd.lojaRapida.negocio.CrudService;
 
 @ManagedBean
 public class UsuarioMBean {

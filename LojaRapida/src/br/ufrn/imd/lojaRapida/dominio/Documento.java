@@ -1,4 +1,4 @@
-package br.com.integrador.dominio;
+package br.ufrn.imd.lojaRapida.dominio;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import br.com.integrador.dao.PersistDB;
+import br.ufrn.imd.lojaRapida.dao.PersistDB;
 import br.com.integrador.enums.TipoDocumento;
 
 @Entity

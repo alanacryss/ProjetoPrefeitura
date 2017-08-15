@@ -1,7 +1,7 @@
-package br.com.integrador.negocio;
+package br.ufrn.imd.lojaRapida.negocio;
 
-import br.com.integrador.dao.UsuarioDAO;
-import br.com.integrador.dominio.Usuario;
+import br.ufrn.imd.lojaRapida.dao.UsuarioDAO;
+import br.ufrn.imd.lojaRapida.dominio.Usuario;
 
 public class UsuarioService {
 

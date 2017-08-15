@@ -1,9 +1,9 @@
-package br.com.integrador.dao;
+package br.ufrn.imd.lojaRapida.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.integrador.dominio.Notificacao;
+import br.ufrn.imd.lojaRapida.dominio.Notificacao;
 import br.com.integrador.enums.PrioridadeNotificacao;
 
 public class NotificacaoDAO extends GenericDAO<Notificacao> {

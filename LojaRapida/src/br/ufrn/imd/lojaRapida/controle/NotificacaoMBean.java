@@ -1,10 +1,10 @@
-package br.com.integrador.controller;
+package br.ufrn.imd.lojaRapida.controle;
 
 import javax.faces.bean.ManagedBean;
 
-import br.com.integrador.dominio.Notificacao;
+import br.ufrn.imd.lojaRapida.dominio.Notificacao;
 import br.com.integrador.enums.PrioridadeNotificacao;
-import br.com.integrador.negocio.CrudService;
+import br.ufrn.imd.lojaRapida.negocio.CrudService;
 
 @ManagedBean
 public class NotificacaoMBean {

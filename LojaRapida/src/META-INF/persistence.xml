@@ -8,15 +8,15 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
 		<jta-data-source>java:/DataPostes</jta-data-source>
-		<class>br.com.integrador.dominio.Documento</class>
-		<class>br.com.integrador.dominio.Notificacao</class>
-		<class>br.com.integrador.dominio.Usuario</class>
 		<class>br.ufrn.imd.lojaRapida.dominio.Categoria</class>
 		<class>br.ufrn.imd.lojaRapida.dominio.Cliente</class>
 		<class>br.ufrn.imd.lojaRapida.dominio.ItemVenda</class>
 		<class>br.ufrn.imd.lojaRapida.dominio.Oferta</class>
 		<class>br.ufrn.imd.lojaRapida.dominio.Produto</class>
 		<class>br.ufrn.imd.lojaRapida.dominio.Venda</class>
+		<class>br.ufrn.imd.lojaRapida.dominio.Documento</class>
+		<class>br.ufrn.imd.lojaRapida.dominio.Notificacao</class>
+		<class>br.ufrn.imd.lojaRapida.dominio.Usuario</class>
 		<shared-cache-mode>NONE</shared-cache-mode>
 		<properties>
 		
