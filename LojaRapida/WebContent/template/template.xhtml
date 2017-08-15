@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" lang="pt-br">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Loja Rápida - <ui:insert name="titulo">Subistituir o Título Aqui</ui:insert></title>
+
+	<!-- <h:outputStylesheet library="css" name="style.css" /> -->
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+
+	<style>
+.action {
+	width: 10%;
+}
+</style>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="100" header="Loja Rápida"
+			resizable="true" collapsible="true">
+			<h:form>
+				<p:growl id="mensagens" sticky="true" />
+		
+		
+		Módulo Administrativo - <h:commandLink value="Início"
+					action="principal" /> - <ui:insert name="titulo">Subistituir o Título Aqui</ui:insert>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center"
+			footer="Aplicação Exemplo">
+			<h:form>
+				<p:menubar>
+					<p:submenu label="Administração" icon="ui-icon-document">
+
+						<p:menuitem value="Cadastro de Categorias" url="categoria.xhtml" />
+						<p:menuitem value="Catálogo de Produtos" url="produto.xhtml" />
+						<p:menuitem value="Gerenciar Ofertas" url="oferta.xhtml" />
+						<p:menuitem value="Carteira de Clientes" url="cliente.xhtml" />
+						<p:menuitem value="Gerenciar Vendas" url="venda.xhtml" />
+
+					</p:submenu>
+					
+					<f:facet name="options">
+						<p:inputText style="margin-right:10px" placeholder="Search" />
+						<p:commandButton value="Logout"
+							action="/loja.xhtml?faces-redirect=true" icon="ui-icon-extlink" />
+					</f:facet>
+				</p:menubar>
+			</h:form>
+
+			<ui:insert name="conteudo">
+			Conteúdo...
+			</ui:insert>
+			
+		</p:layoutUnit>
+
+		<p:growl id="msgAjax" sticky="true" />
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Sim" type="button"
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="Não" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+
+	</p:layout>
+
+</h:body>
+
+</html>

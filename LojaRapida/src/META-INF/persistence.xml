@@ -1,0 +1,43 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+	
+	<persistence-unit name="loja">
+			
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<jta-data-source>java:/DataPostes</jta-data-source>
+		<class>br.com.integrador.dominio.Documento</class>
+		<class>br.com.integrador.dominio.Notificacao</class>
+		<class>br.com.integrador.dominio.Usuario</class>
+		<class>br.ufrn.imd.lojaRapida.dominio.Categoria</class>
+		<class>br.ufrn.imd.lojaRapida.dominio.Cliente</class>
+		<class>br.ufrn.imd.lojaRapida.dominio.ItemVenda</class>
+		<class>br.ufrn.imd.lojaRapida.dominio.Oferta</class>
+		<class>br.ufrn.imd.lojaRapida.dominio.Produto</class>
+		<class>br.ufrn.imd.lojaRapida.dominio.Venda</class>
+		<shared-cache-mode>NONE</shared-cache-mode>
+		<properties>
+		
+			<!-- Configuracoes especificas do Hibernate -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+<!-- 
+			<property name="connection.provider_class"
+				value="org.hibernate.connection.C3P0ConnectionProvider" />
+			<property name="hibernate.c3p0.acquire_increment" value="4" />
+			<property name="hibernate.c3p0.idle_test_period" value="3000" />
+			<property name="hibernate.c3p0.max_size" value="100" />
+			<property name="hibernate.c3p0.max_statements" value="15" />
+			<property name="hibernate.c3p0.min_size" value="5" />
+			<property name="hibernate.c3p0.timeout" value="100" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.show_sql" value="true" />
+ -->
+		</properties>
+	</persistence-unit>
+</persistence>

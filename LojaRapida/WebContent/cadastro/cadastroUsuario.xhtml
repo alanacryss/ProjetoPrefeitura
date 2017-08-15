@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" lang="pt-br">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SisDoc - Cadastro</title>
+
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="materialize.css" />
+	<h:outputStylesheet library="css" name="materialize.min.css" />
+
+	<h:outputScript name="materialize.js" library="javascript" />
+	<h:outputScript name="materialize.min.js" library="javascript" />
+	<h:outputScript name="jquery3.2.1.js" library="javascript" />
+
+	<style>
+.action {
+	width: 10%;
+}
+</style>
+</h:head>
+<h:body>
+
+	<div class="container">
+		<div class="row" align="center">
+			<h3>Cadastro de usuário</h3>
+		</div>
+
+		<div class="row">
+			<div class="col s12">
+				<p:panel id="pnlAutenticacao">
+					<h:panelGrid columns="2">
+						<h:form>
+							<h:outputText value="Nome: " />
+							<p:inputText id="txtUsuario"
+								value="#{usuarioMBean.usuario.nome}" required="true"
+								requiredMessage="Digite seu nome." />
+								
+							<h:outputText value="Email: " />
+							<p:inputText id="txtEmail" value="#{usuarioMBean.usuario.email}"
+								required="true" requiredMessage="Digite um email válido." />
+								
+							<h:outputText value="Senha: " />
+							<p:password id="txtPassword" value="#{usuarioMBean.usuario.senha}"
+								required="true" requiredMessage="Digite uma senha." />
+								
+							<h:outputText value="Confirmar senha: " />
+							<p:password id="txtConfirmPassword" value="#{usuarioMBean.usuario.comfirmSenha}"
+								required="true" requiredMessage="Confirme sua senha." />
+								
+							<h:outputText value="Cargo: " />
+							<p:inputText id="txtCargo" value="#{usuarioMBean.usuario.cargo}"
+								required="true" requiredMessage="Digite seu cargo." />
+								
+							<h:outputText value="Setor: " />
+							<p:inputText id="txtSetor" value="#{usuarioMBean.usuario.setor}"
+								required="true" requiredMessage="Digite um setor." />
+							<h:inputHidden />
+							<div class="row">
+								<div class="col s2">
+									<p:commandButton value="Login" />
+								</div>
+								<div class="col s2 offset-s6">
+									<p:commandButton value="Cadastrar" />
+								</div>
+							</div>
+						</h:form>
+					</h:panelGrid>
+				</p:panel>
+			</div>
+		</div>
+
+	</div>
+
+<!-- 	<div class="container"> -->
+<!-- 		<div class="row"> -->
+<!-- 			<div class="col s6 offset-s3"> -->
+<!-- 				<h3>Cadastro de Usuário</h3> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<form class="col s12" action="#{usuarioMBean.salvarUsuario()}"> -->
+<!-- 			<div class="row"> -->
+<!-- 				<div class="card col s12"> -->
+<!-- 					<div class="card-content"> -->
+<!-- 						<div class="row"> -->
+<!-- 							<div class="input-field col s12"> -->
+<!-- 								<input id="first_name" type="text" class="validate" value="#{usuario.nome}" /> <label -->
+<!-- 									class="active" for="first_name">Nome</label> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+
+<!-- 						<div class="row"> -->
+<!-- 							<div class="input-field col s6"> -->
+<!-- 								<input id="password" type="password" class="validate" value="#{usuario.senha}" /> <label -->
+<!-- 									class="active" for="password">Senha</label> -->
+<!-- 							</div> -->
+<!-- 							<div class="input-field col s6"> -->
+<!-- 								<input id="password" type="password" class="validate" value="#{usuario.confirmSenha}" /> <label -->
+<!-- 									class="active" for="password">Confirme a senha</label> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+
+<!-- 						<div class="row"> -->
+<!-- 							<div class="input-field col s6"> -->
+<!-- 								<input id="email" type="email" class="validate" value="#{usuario.email}" /> <label -->
+<!-- 									class="active" for="email">Email</label> -->
+<!-- 							</div> -->
+<!-- 							<div class="input-field col s6"> -->
+<!-- 								<input type="text" class="validate" value="#{usuario.cargo}" /> <label class="active" -->
+<!-- 									for="cargo">Cargo</label> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="row"> -->
+<!-- 							<div class="input-field col s6"> -->
+<!-- 								<input type="text" class="validate" value="#{usuario.setor}" /> <label class="active" -->
+<!-- 									for="setor">Setor</label> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="row"> -->
+<!-- 				<div class="col s2"> -->
+<!-- 					<a href="../login/indexLogin.xhtml" class="waves-effect waves-light btn orange lighten-2">Cancelar</a> -->
+<!-- 				</div> -->
+<!-- 				<div class="col s2 offset-s8"> -->
+<!-- 					<a href="../login/indexLogin.xhtml" class="waves-effect waves-light btn">Cadastrar</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</form> -->
+<!-- 	</div> -->
+
+</h:body>
+
+</html>

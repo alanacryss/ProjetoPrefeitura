@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+
+	<ui:define name="titulo">
+		Gerenciamento de Vendas
+	</ui:define>
+
+	<ui:define name="conteudo">
+	
+       <p:tabView>
+		<p:tab title="Consulta">
+			<h:form>
+				<p:dataTable value="#{vendaMBean.vendas}" var="venda"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					filteredValue="#{vendaMBean.filteredVendas}" rows="10">
+					<f:facet name="header">Vendas</f:facet>
+
+					<p:column sortBy="#{venda.id}" headerText="ID" width="80">
+						<h:outputText value="#{venda.id}" />
+					</p:column>
+
+					<p:column sortBy="#{venda.cliente.nome}" headerText="Cliente"
+						filterBy="#{venda.cliente.nome}">
+						<h:outputText value="#{venda.cliente.nome}" />
+					</p:column>
+
+					<p:column sortBy="#{venda.data}" headerText="Data">
+						<h:outputText value="#{venda.data}">
+							<f:convertDateTime pattern="dd/MM/yyyy - HH:mm" type="date" />
+						</h:outputText>
+					</p:column>
+
+					<p:column sortBy="#{venda.total}" headerText="Total">
+						<h:outputText value="#{venda.total}">
+							<f:convertNumber pattern="¤#,##0.00" currencySymbol="R$ " />
+						</h:outputText>
+					</p:column>
+
+					<p:column styleClass="action">
+
+						<f:facet name="header">
+							<h:outputText value="Visualizar" />
+						</f:facet>
+						<p:commandButton action="#{vendaDetalheMBean.selecionar(venda)}"
+							icon="ui-icon-zoomout" ajax="false" />
+					</p:column>
+
+					<f:facet name="footer">Faturamento Total: 
+				<h:outputText value="#{vendaMBean.faturamento()}">
+							<f:convertNumber pattern="¤#,##0.00" currencySymbol="R$ " />
+						</h:outputText>
+					</f:facet>
+				</p:dataTable>
+			</h:form>
+			</p:tab>
+			</p:tabView>
+	</ui:define>
+
+</ui:composition>

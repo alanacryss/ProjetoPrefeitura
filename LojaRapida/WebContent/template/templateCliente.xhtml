@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" lang="pt-br"> 
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Loja Rápida - <ui:insert name="titulo">Subistituir o Título Aqui</ui:insert></title>
+	
+	<!-- <h:outputStylesheet library="css" name="style.css" /> -->
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+
+	<style>
+.action {
+	width: 10%;
+}
+</style>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+<p:growl id="mensagens" sticky="true" />
+<p:layoutUnit position="north" header="Loja Rápida"
+		 collapsible="true" >
+
+<h:form id="clienteForm"
+		rendered="#{carrinhoMBean.cliente.nome == null}">
+		<p:fieldset id="clienteField" legend="Cliente" style="margin-top:20px">
+
+			<!-- <p:selectOneMenu value="#{carrinhoMBean.cliente.id}">
+				<f:selectItems value="#{clienteMBean.listaCompleta}" var="cliente"
+					itemValue="#{cliente.id}" itemLabel="#{cliente.nome}" />
+				<p:ajax event="change" update="carForm produtos mensagens" />
+			</p:selectOneMenu> -->
+
+			<p:panelGrid columns="2">
+
+				<p:outputLabel rendered="#{carrinhoMBean.cliente.email == null}"
+					value="Email" for="email" />
+					
+				<p:inputText value="#{carrinhoMBean.cliente.email}" required="true"
+					id="email" validatorMessage="Email Inválido">
+					<f:validateRegex pattern="[A-Za-z0-9\._-]+@[A-Za-z]+\.[A-Za-z]+" />
+				</p:inputText>
+
+				<p:outputLabel value="Senha" id="lblSenha" for="senha" />
+				<p:password value="#{carrinhoMBean.cliente.senha}" required="true"
+					id="senha" />
+
+				<p:commandButton value="Autenticar"
+					action="#{carrinhoMBean.autenticarCliente()}" ajax="false"
+					icon="ui-icon-disk" />
+
+			</p:panelGrid>
+		</p:fieldset>
+	</h:form>
+
+<h:form id="clienteAutenticadoForm"
+		rendered="#{carrinhoMBean.cliente.nome != null}">
+
+			<p:breadCrumb>
+				<p:menuitem value="Home" url="/faces/loja.xhtml" />
+				<p:menuitem value="Minhas Compras" url="/faces/cliente/minhasCompras.xhtml" />
+				<p:menuitem value="Sair" action="#{carrinhoMBean.sair()}"
+					ajax="false" />
+
+			</p:breadCrumb>
+
+	</h:form>
+	
+</p:layoutUnit>
+		<p:layoutUnit position="center"
+			footer="">
+
+		
+			<ui:insert name="conteudo">
+			Conteúdo...
+		</ui:insert>
+		</p:layoutUnit>
+
+         <p:growl id="msgAjax" sticky="true" />
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Sim" type="button"
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="Não" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+
+	</p:layout>
+
+</h:body>
+
+</html>

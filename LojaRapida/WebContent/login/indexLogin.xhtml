@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" lang="pt-br">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SisDoc - Login</title>
+
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="materialize.css" />
+	<h:outputStylesheet library="css" name="materialize.min.css" />
+
+	<h:outputScript name="materialize.js" library="javascript" />
+	<h:outputScript name="materialize.min.js" library="javascript" />
+	<h:outputScript name="jquery3.2.1.js" library="javascript" />
+
+
+	<style>
+.action {
+	width: 10%;
+}
+</style>
+</h:head>
+
+<h:body>
+
+	<div class="container">
+		<div class="row" align="center">
+			<h3>SisDoc</h3>
+		</div>
+
+		<div class="row">
+			<div class="col s6 offset-s3">
+				<p:panel id="pnlAutenticacao">
+					<h:panelGrid columns="2">
+						<h:form >
+							<h:outputText value="Email: " />
+							<p:inputText id="txtUsuario"
+								value="#{usuarioMBean.usuario.email}" required="true"
+								requiredMessage="Um usuário é necessário para autenticação." />
+							<h:outputText value="Senha: " />
+							<p:password id="txtSenha" value="#{usuarioMBean.usuario.email}"
+								required="true" requiredMessage="Você não digitou uma senha." />
+							<h:inputHidden />
+							<div class="row">
+								<div class="col s2">
+									<p:commandButton value="Login" />
+								</div>
+								<div class="col s2 offset-s6">
+									<p:commandButton value="Cadastrar"
+										action="#{loginMBean.logar()}" ajax="false" />
+								</div>
+							</div>
+						</h:form>
+					</h:panelGrid>
+				</p:panel>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+
+</html>

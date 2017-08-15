@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/templateCliente.xhtml">
+
+
+	<ui:define name="conteudo">
+
+		<h:form id="minhasComprasForm">
+			<p:fieldset id="comprasField" legend="Minhas Compras"
+				style="margin-top:20px">
+
+
+
+				<h:form>
+					<p:dataTable
+						value="#{vendaMBean.vendasCliente(carrinhoMBean.cliente.id)}"
+						var="venda" paginator="true"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rows="5">
+						<f:facet name="header">Minhas Compras</f:facet>
+
+						<p:column headerText="ID" width="80">
+							<h:outputText value="#{venda.id}" />
+						</p:column>
+
+						<p:column headerText="Cliente">
+							<h:outputText value="#{venda.cliente.nome}" />
+						</p:column>
+
+						<p:column headerText="Data">
+							<h:outputText value="#{venda.data}">
+								<f:convertDateTime pattern="dd/MM/yyyy - HH:mm" type="date" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Total">
+							<h:outputText value="#{venda.total}">
+								<f:convertNumber pattern="¤#,##0.00" currencySymbol="R$ " />
+							</h:outputText>
+						</p:column>
+
+						<p:column styleClass="action">
+
+							<f:facet name="header">
+								<h:outputText value="Ação" />
+							</f:facet>
+							<p:commandButton action="#{vendaDetalheMBean.selecionar2(venda)}"
+								icon="ui-icon-zoomout" ajax="false" />
+						</p:column>
+
+						<f:facet name="footer">Total de Compras: 
+				<h:outputText value="#{vendaMBean.faturamento()}">
+								<f:convertNumber pattern="¤#,##0.00" currencySymbol="R$ " />
+							</h:outputText>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
+
+			</p:fieldset>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

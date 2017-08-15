@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+
+	<ui:define name="titulo">
+		Produto
+	</ui:define>
+
+	<ui:define name="conteudo">
+
+		<p:tabView binding="#{produtoMBean.tabView}">
+
+
+			<p:tab title="Consulta">
+				<h:form>
+					<p:dataTable id="dtLista" value="#{produtoMBean.listaCompleta}"
+						var="produto" styleClass="listagem" rows="10" paginator="true"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15,20">
+
+						<p:column headerText="ID" width="80">
+							<h:outputText value="#{produto.id}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Denominação" />
+							</f:facet>
+							<h:outputText value="#{produto.denominacao}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Categoria" />
+							</f:facet>
+							<h:outputText value="#{produto.categoria}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Preço" />
+							</f:facet>
+							<h:outputText value="#{produto.preco}">
+								<f:convertNumber type="currency" currencySymbol="R$" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Estoque" />
+							</f:facet>
+							<h:outputText value="#{produto.estoque}" />
+						</p:column>
+						
+
+						<p:column styleClass="action">
+
+							<f:facet name="header">
+								<h:outputText value="Editar" />
+							</f:facet>
+							<p:commandButton action="#{produtoMBean.selecionar(produto)}"
+								icon="ui-icon-zoomout" ajax="false" />
+
+						</p:column>
+
+						<p:column styleClass="action">
+
+							<f:facet name="header">
+								<h:outputText value="Deletar" />
+							</f:facet>
+
+							<p:commandButton action="#{produtoMBean.deletar(produto)}"
+								icon="ui-icon-trash" update="dtLista , msgAjax">
+								<p:confirm header="Confirmation" message="Deseja Deletar?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+						</p:column>
+
+
+					</p:dataTable>
+				</h:form>
+			</p:tab>
+
+			<p:tab title="Cadastro" binding="#{produtoMBean.tabCadastro}">
+
+
+				<h3>Produto</h3>
+
+				<h:form>
+					<h:inputHidden value="#{produtoMBean.produto.id}" />
+
+					<p:panelGrid columns="2">
+
+
+						<p:outputLabel value="Denominação" />
+						<p:inputText value="#{produtoMBean.produto.denominacao}"
+							required="true" requiredMessage="Campo Denominação é obrigatório"
+							validatorMessage="Campo Denominação não pode ultrapassar 30 caractres">
+							<f:validateLength maximum="90" />
+						</p:inputText>
+						<h:outputLabel value="Descrição" />
+
+
+						<p:inputTextarea maxlength="150"
+							value="#{produtoMBean.produto.descricao}" />
+
+						<p:outputLabel value="Imagem" />
+						<p:inputText value="#{produtoMBean.produto.imagem}"
+							required="true" requiredMessage="Campo Imagem é obrigatório"
+							validatorMessage="Campo Denominação não pode ultrapassar 30 caractres">
+						</p:inputText>
+
+						<p:outputLabel value="Preço" />
+						<p:inputText value="#{produtoMBean.produto.preco}">
+							<f:convertNumber type="currency" pattern="#0.00" />
+						</p:inputText>
+						<p:outputLabel value="Categoria" />
+						<p:selectOneMenu value="#{produtoMBean.produto.categoria.id}">
+							<f:selectItems value="#{categoriaMBean.listaCompleta}"
+								var="categoria" itemValue="#{categoria.id}"
+								itemLabel="#{categoria.denominacao}" />
+						</p:selectOneMenu>
+						
+						<p:outputLabel value="Estoque" />
+						<p:inputText value="#{produtoMBean.produto.estoque}">
+							<f:convertNumber type="number" />
+						</p:inputText>
+						
+					</p:panelGrid>
+
+					<p:commandButton value="Salvar" action="#{produtoMBean.salvar()}"
+						ajax="false" icon="ui-icon-disk" />
+
+				</h:form>
+			</p:tab>
+
+
+		</p:tabView>
+	</ui:define>
+
+</ui:composition>

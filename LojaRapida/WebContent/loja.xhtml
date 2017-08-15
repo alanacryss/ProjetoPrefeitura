@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/templateCliente.xhtml">
+
+	<ui:define name="titulo">
+		Carrinho
+	</ui:define>
+
+	<p:growl id="mensagens" sticky="true" />
+
+	<ui:define name="conteudo">
+
+<script type="text/javascript">
+    function handleDrop(event, ui) {
+        var droppedCar = ui.draggable;
+ 
+        droppedCar.fadeOut('fast');
+    }
+</script>
+
+<h:form>
+<p:panel style="text-align: right;">
+	<p:commandButton 
+		value="Administrar Loja" 
+		action="/admin/principal.xhtml?faces-redirect=true"
+		icon="ui-icon-gear"/>
+</p:panel>
+</h:form>
+		<h:form id="carForm">
+			<p:fieldset id="produtosField" legend="Produtos Disponíveis"
+				style="margin-top:20px">
+
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Categoria" />
+					<p:selectOneMenu value="#{carrinhoMBean.categoria.id}"
+						id="categoria">
+						<f:selectItem itemValue="0" itemLabel="Todos" />
+						<f:selectItems value="#{categoriaMBean.listaCompleta}"
+							var="categoria" itemValue="#{categoria.id}"
+							itemLabel="#{categoria.denominacao}" />
+						<p:ajax event="change" update="produtos" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+
+				<p:dataGrid id="produtos" var="produto"
+					value="#{produtoMBean.getListaCompletaPorCategoria(carrinhoMBean.categoria.id)}"
+					columns="4" layout="grid" rows="12" paginator="true"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="6,12,16">
+
+					<f:facet name="header">
+           Produtos
+        </f:facet>
+
+					<p:panel id="pnl" header="#{produto.denominacao}"
+						style="text-align:center">
+
+						<h:panelGrid columns="1" style="width:100%">
+
+							<h:outputText value="#{produto.descricao}" />
+
+							<p:graphicImage url="#{produto.imagem}" width="120" height="100" />
+
+							<h:outputText value="#{produto.preco}">
+								<f:convertNumber pattern="R$ #,##0.00" />
+							</h:outputText>
+						</h:panelGrid>
+					</p:panel>
+
+					<p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar"
+						stack=".ui-panel" />
+
+				</p:dataGrid>
+			</p:fieldset>
+
+
+			<p:fieldset id="carrinho" legend="Carrinho de Compras"
+				style="margin-top:20px">
+				<p:outputPanel id="dropArea">
+
+					<h:outputText value="Arraste e Solte Aqui!!!"
+						rendered="#{empty carrinhoMBean.itens}" style="font-size:24px;" />
+
+
+					<p:dataTable id="carrinhoTable" var="item"
+						value="#{carrinhoMBean.itens}"
+						rendered="#{not empty carrinhoMBean.itens}">
+
+						<p:column headerText="Produto">
+							<h:outputText value="#{item.denominacao}" />
+						</p:column>
+
+						<p:column headerText="Categoria">
+							<h:outputText value="#{item.categoria.denominacao}" />
+						</p:column>
+
+						<p:column headerText="Preço">
+							<h:outputText value="#{item.preco}">
+								<f:convertNumber pattern="R$ #,##0.00" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Remover">
+							<p:commandButton action="#{carrinhoMBean.remover(item)}"
+								icon="ui-icon-trash" update="carForm mensagens">
+
+							</p:commandButton>
+						</p:column>
+
+						<f:facet name="footer">
+							<p:column>
+								<h:outputText value="#{carrinhoMBean.valorTotal}">
+									<f:convertNumber pattern="R$ #,##0.00" />
+								</h:outputText>
+							</p:column>
+						</f:facet>
+
+					</p:dataTable>
+				</p:outputPanel>
+			</p:fieldset>
+
+
+			<p:droppable for="carrinho" tolerance="touch"
+				activeStyleClass="ui-state-highlight" datasource="produtos"
+				onDrop="handleDrop">
+				<p:ajax listener="#{carrinhoMBean.adicionar}"
+					update="carForm produtos mensagens" />
+			</p:droppable>
+
+			<p:commandButton value="Fechar Compras"
+				action="#{carrinhoMBean.resumo_compra()}" rendered="#{carrinhoMBean.itens.size() != 0}"/>
+			
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+

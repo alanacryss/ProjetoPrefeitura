@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+
+	<ui:define name="titulo">
+		Oferta
+	</ui:define>
+
+	<ui:define name="conteudo">
+
+		<p:tabView binding="#{ofertaMBean.tabView}">
+
+
+			<p:tab title="Consulta">
+				<h:form>
+					<p:dataTable id="dtLista" value="#{ofertaMBean.listaCompleta}"
+						var="oferta" styleClass="listagem" rows="10" paginator="true"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15,20">
+
+						<p:column headerText="ID" width="80">
+							<h:outputText value="#{oferta.id}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Produto" />
+							</f:facet>
+							<h:outputText value="#{oferta.produto.denominacao}" />
+						</p:column>
+
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Data Fim da Oferta" />
+							</f:facet>
+							<h:outputText value="#{oferta.dataFimOferta}">
+							<f:convertDateTime pattern="dd/MM/yyyy" type="date" />
+						</h:outputText>
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Preço" />
+							</f:facet>
+							<h:outputText value="#{oferta.precoOferta}">
+								<f:convertNumber type="currency" currencySymbol="R$" />
+							</h:outputText>
+						</p:column>
+
+
+						<p:column styleClass="action">
+
+							<f:facet name="header">
+								<h:outputText value="Editar" />
+							</f:facet>
+							<p:commandButton action="#{ofertaMBean.selecionar(oferta)}"
+								icon="ui-icon-zoomout" ajax="false" />
+
+						</p:column>
+
+						<p:column styleClass="action">
+
+							<f:facet name="header">
+								<h:outputText value="Deletar" />
+							</f:facet>
+
+							<p:commandButton action="#{ofertaMBean.deletar(oferta)}"
+								icon="ui-icon-trash" update="dtLista , msgAjax">
+								<p:confirm header="Confirmation" message="Deseja Deletar?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+						</p:column>
+
+
+					</p:dataTable>
+				</h:form>
+			</p:tab>
+
+			<p:tab title="Cadastro" binding="#{ofertaMBean.tabCadastro}">
+
+
+				<h3>Oferta</h3>
+
+				<h:form>
+					<h:inputHidden value="#{ofertaMBean.oferta.id}" />
+
+					<p:panelGrid columns="2">
+
+
+						<p:outputLabel value="Produto" />
+						<h:selectOneMenu value="#{ofertaMBean.oferta.produto.id}">
+							<f:selectItems value="#{produtoMBean.listaCompleta}"
+								var="produto" itemValue="#{produto.id}"
+								itemLabel="#{produto.denominacao}" />
+						</h:selectOneMenu>
+
+						<p:outputLabel value="Data Final da Oferta" />
+						<p:calendar id="button"
+							value="#{ofertaMBean.oferta.dataFimOferta}" showOn="button" />
+
+						<p:outputLabel value="Preço da Oferta" />
+						<p:inputText value="#{ofertaMBean.oferta.precoOferta}">
+							<f:convertNumber type="currency" pattern="#0.00" />
+						</p:inputText>
+
+
+
+					</p:panelGrid>
+
+					<p:commandButton value="Salvar" action="#{ofertaMBean.salvar()}"
+						ajax="false" icon="ui-icon-disk" />
+
+				</h:form>
+			</p:tab>
+
+
+		</p:tabView>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/templateCliente.xhtml">
+
+	<ui:define name="titulo">
+		Resumo da Compra
+	</ui:define>
+
+	<p:growl id="mensagens" sticky="true" />
+
+	<ui:define name="conteudo">
+
+		<h:form>
+			
+			<p:dataTable var="item" value="#{carrinhoMBean.itens}"
+				reflow="true" style="margin-top:20px">
+				<p:column headerText="Id" width="80">
+					<h:outputText value="#{item.id}" />
+				</p:column>
+
+				<p:column headerText="Produto">
+					<h:outputText value="#{item.denominacao}" />
+				</p:column>
+
+				<f:facet name="header">Carrinho</f:facet>
+				<p:column headerText="Preço">
+					<h:outputText value="#{item.preco}">
+						<f:convertNumber pattern="¤#,##0.00" currencySymbol="R$ " />
+					</h:outputText>
+				</p:column>
+				
+				<f:facet name="footer">Total: 
+				<h:outputText value="#{carrinhoMBean.valorTotalFormatado}">
+							<f:convertNumber pattern="¤#,##0.00" currencySymbol="R$ " />
+						</h:outputText>
+					</f:facet>
+					
+					<p:column headerText="Estoque">
+					<h:outputText value="#{item.estoque > 0}"/>
+				</p:column>
+
+			</p:dataTable>
+			
+			
+		</h:form>
+		
+		 <p:commandButton value="Fechar Compras"
+				action="#{carrinhoMBean.venda()}" update="mensagens"
+				style="margin-top:20px">
+				<p:confirm header="Confirmação"
+					message="Deseja Efetuar a Compra? Total: R$ #{carrinhoMBean.getValorTotalFormatado()}"
+					icon="ui-icon-alert" />
+			</p:commandButton> 
+			
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
+	</ui:define>
+
+</ui:composition>
+
