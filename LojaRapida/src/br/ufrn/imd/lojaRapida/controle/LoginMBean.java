@@ -7,7 +7,8 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class LoginMBean {
 
-	public String logar() {
-		return "cadastroUsuario.faces?faces-redirect=true";
+	public String cadastrar() {
+		System.out.println("Entrou");
+		return "/cadastro/cadastroUsuario";
 	}
 }

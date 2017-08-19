@@ -3,6 +3,8 @@ package br.ufrn.imd.lojaRapida.dominio;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -16,13 +18,15 @@ public class Documento implements PersistDB {
 	@GeneratedValue
 	private int id;
 	private String titulo;
+	
+	@Enumerated(EnumType.STRING)
 	private TipoDocumento tipo;
 	private Date data;
 	private String assunto;
 
 	@Override
 	public int getId() {
-		return 0;
+		return id;
 	}
 
 	@Override

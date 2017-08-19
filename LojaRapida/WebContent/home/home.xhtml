@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/header.xhtml">
+
+
+	<ui:define name="titulo">
+
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<div class="row" align="center">
+			<h3>Bem Vindo ao SisDoc</h3>
+
+			<h:form>
+				<h:commandButton
+					action="/cadastro/cadastroDocumento?faces-redirect=true"
+					value="Novo Documento" style="height:50px" />
+			</h:form>
+
+			<h4>Sistema de Gerenciamento de Documentos</h4>
+			<h4>Prefeitura Municipal de Rodolfo Fernandes</h4>
+
+		</div>
+
+	</ui:define>
+
+</ui:composition>

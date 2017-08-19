@@ -1,28 +1,35 @@
 package br.ufrn.imd.lojaRapida.controle;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+
+import org.hibernate.loader.criteria.CriteriaJoinWalker;
 
 import br.ufrn.imd.lojaRapida.dominio.Usuario;
 import br.ufrn.imd.lojaRapida.negocio.CrudService;
 
 @ManagedBean
 public class UsuarioMBean {
-
+	
+	
+	@EJB
+	private CrudService crudService;
 	private Usuario usuario = new Usuario();
 	private int id;
 	
+	
 	public void salvarUsuario() {
-		new CrudService().create(usuario);
+		crudService.create(usuario);
 		usuario = new Usuario();
 	}
 	
 	public void atualizarUsuario() {
-		new CrudService().update(usuario);
+		crudService.update(usuario);
 		usuario = new Usuario();
 	}
 	
 	public void removerUsuario(Usuario usuario) {
-		new CrudService().delete(usuario);
+		crudService.delete(usuario);
 	}
 	
 	public Usuario getUsuario() {

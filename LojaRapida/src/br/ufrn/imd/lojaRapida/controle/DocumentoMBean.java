@@ -1,28 +1,54 @@
 package br.ufrn.imd.lojaRapida.controle;
 
+import java.util.List;
+
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
+import org.primefaces.component.tabview.TabView;
+
+import br.com.integrador.enums.TipoDocumento;
+import br.ufrn.imd.lojaRapida.dao.DocumentoDAO;
 import br.ufrn.imd.lojaRapida.dominio.Documento;
 import br.ufrn.imd.lojaRapida.negocio.CrudService;
+import br.ufrn.imd.lojaRapida.negocio.DocumentoService;
 
 @ManagedBean
 public class DocumentoMBean {
-
+	
+	@EJB
+	private CrudService crudService;
+	
+	@EJB
+	private DocumentoService docService;
+	
 	private Documento doc = new Documento();
-	private int id;
+	private TipoDocumento[] tipos;
+	private List<Documento> documentos;
+	private TabView tabView;
+	//private int id;
 	
 	public void salvarDoc() {
-		new CrudService().create(doc);
+		crudService.create(doc);
 		doc = new Documento();
 	}
 	
-	public void atualizarDoc() {
-		new CrudService().update(doc);
-		doc = new Documento();
+	public String atualizarDoc(Documento documento) {
+		doc = documento;
+		//docService.atualiza(id);
+		//doc = new Documento();
+		return "/cadastro/cadastroDocumento";
 	}
 	
-	public void removerDoc(Documento doc) {
-		new CrudService().delete(doc);
+	public List<Documento> getListaDocumento() {
+		return docService.getAllDocumentos();	
+	}
+	
+	public String removerDoc(int id) {
+		docService.removeDoc(id);
+		doc = new Documento();
+		
+		return null;
 	}
 
 	public Documento getDoc() {
@@ -33,12 +59,30 @@ public class DocumentoMBean {
 		this.doc = doc;
 	}
 
-	public int getId() {
-		return id;
+	public TipoDocumento[] getTipos() {
+		return TipoDocumento.values();
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public List<Documento> getDocumentos() {
+		return documentos;
 	}
+
+	public void setDocumentos(List<Documento> documentos) {
+		this.documentos = documentos;
+	}
+
+	public TabView getTabView() {
+		return tabView;
+	}
+
+	public void setTabView(TabView tabView) {
+		this.tabView = tabView;
+	}
+
+	public void setTipos(TipoDocumento[] tipos) {
+		this.tipos = tipos;
+	}
+	
+	
 	
 }

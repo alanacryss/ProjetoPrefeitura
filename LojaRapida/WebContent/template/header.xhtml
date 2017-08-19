@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" lang="pt-br">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SisDoc<ui:insert name="titulo">Subistituir o Título Aqui</ui:insert></title>
+
+	<!-- <h:outputStylesheet library="css" name="style.css" /> -->
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="materialize.css" />
+	<h:outputStylesheet library="css" name="materialize.min.css" />
+
+	<h:outputScript name="materialize.js" library="javascript" />
+	<h:outputScript name="materialize.min.js" library="javascript" />
+	<h:outputScript name="jquery3.2.1.js" library="javascript" />
+
+	<style>
+.action {
+	width: 10%;
+}
+</style>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="100" header="SisDoc"
+			resizable="true" collapsible="true">
+			<h:form>
+				<p:growl id="mensagens" sticky="true" />
+		
+		
+		Módulo Administrativo - <h:commandLink value="Início"
+					action="principal" /> - <ui:insert name="titulo">Subistituir o Título Aqui</ui:insert>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" footer="Aplicação Exemplo">
+			<h:form>
+
+				<p:menubar>
+					<p:menuitem value="Home" icon="ui-icon-home" url="home.xhtml" />
+					<p:menuitem value="Documentos" icon="ui-icon-home"
+						url="../cadastro/listaDoc.xhtml" />
+
+					<f:facet name="options">
+						<p:commandButton value="Logout" icon="ui-icon-extlink"
+							action="#{usuarioController.logout}" />
+					</f:facet>
+				</p:menubar>
+
+			</h:form>
+
+			<ui:insert name="conteudo">
+				<div class="container">Conteúdo...</div>
+			</ui:insert>
+
+		</p:layoutUnit>
+
+		<p:growl id="msgAjax" sticky="true" />
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Sim" type="button"
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="Não" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+
+	</p:layout>
+
+</h:body>
+
+</html>
