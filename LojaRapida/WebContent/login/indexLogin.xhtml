@@ -40,21 +40,19 @@
 						<h:form>
 							<h:outputText value="Email: " />
 							<h:inputText id="txtUsuario" required="required"
-								value="#{usuarioMBean.usuario.email}"
+								value="#{loginMBean.usuario.email}"
 								requiredMessage="Um usuário é necessário para autenticação." />
 							<h:outputText value="Senha: " />
-							<h:inputSecret value="#{usuarioMBean.usuario.email}"
+							<h:inputSecret value="#{loginMBean.usuario.senha}"
 								required="required"
 								requiredMessage="Você não digitou uma senha." />
 							<h:inputHidden />
 							<div class="row">
 								<div class="col s2">
-									<h:commandButton value="Login"
-										action="#{loginMBean.cadastrar()}" />
+									<h:commandButton value="Login" action="#{loginMBean.realizarLogin()}"/>
 								</div>
 								<div class="col s2 offset-s6">
-									<h:commandButton value="Cadastrar"
-										action="#{loginMBean.cadastrar()}" />
+									<h:commandButton value="Cadastrar" action="#{loginMBean.cadastrar()}" />
 								</div>
 							</div>
 						</h:form>

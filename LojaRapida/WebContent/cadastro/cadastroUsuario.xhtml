@@ -38,26 +38,27 @@
 						<h:form>
 							<h:inputHidden value="#{usuarioMBean.usuario.id}" />
 							<h:outputText value="Nome: " />
-							<p:inputText id="txtUsuario"
-								value="#{usuarioMBean.usuario.nome}" required="true"
-								requiredMessage="Digite seu nome." />
-								
+							<p:inputText id="txtUsuario" value="#{usuarioMBean.usuario.nome}"
+								required="true" requiredMessage="Digite seu nome." />
+
 							<h:outputText value="Email: " />
 							<p:inputText id="txtEmail" value="#{usuarioMBean.usuario.email}"
 								required="true" requiredMessage="Digite um email válido." />
-								
+
 							<h:outputText value="Senha: " />
-							<p:password id="txtPassword" value="#{usuarioMBean.usuario.senha}"
-								required="true" requiredMessage="Digite uma senha." />
-								
+							<p:password id="txtPassword"
+								value="#{usuarioMBean.usuario.senha}" required="true"
+								requiredMessage="Digite uma senha." />
+
 							<h:outputText value="Confirmar senha: " />
-							<p:password id="txtConfirmPassword" value="#{usuarioMBean.usuario.comfirmSenha}"
-								required="true" requiredMessage="Confirme sua senha." />
-								
+							<p:password id="txtConfirmPassword"
+								value="#{usuarioMBean.usuario.comfirmSenha}" required="true"
+								requiredMessage="Confirme sua senha." />
+
 							<h:outputText value="Cargo: " />
 							<p:inputText id="txtCargo" value="#{usuarioMBean.usuario.cargo}"
 								required="true" requiredMessage="Digite seu cargo." />
-								
+
 							<h:outputText value="Setor: " />
 							<p:inputText id="txtSetor" value="#{usuarioMBean.usuario.setor}"
 								required="true" requiredMessage="Digite um setor." />
@@ -67,9 +68,17 @@
 									<p:commandButton value="Cancelar" />
 								</div>
 								<div class="col s2 offset-s6">
-									<p:commandButton value="Cadastrar" action="#{usuarioMBean.salvarUsuario()}" />
+									<p:commandButton value="Cadastrar"
+										action="#{usuarioMBean.salvarUsuario()}" />
 								</div>
 							</div>
+
+<!-- 							<p:messages showDetail="true" autoUpdate="true" closable="true" -->
+<!-- 								severity="warn" /> -->
+<!-- 							<p:messages autoUpdate="true" closable="true" severity="error" /> -->
+<!-- 							<p:messages showDetail="true" autoUpdate="true" closable="true" -->
+<!-- 								severity="info" /> -->
+
 						</h:form>
 					</h:panelGrid>
 				</p:panel>
