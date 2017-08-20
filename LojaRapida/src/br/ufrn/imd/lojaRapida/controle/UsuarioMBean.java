@@ -16,13 +16,13 @@ public class UsuarioMBean {
 	private int id;
 	
 	
-	public void salvarUsuario() {
+	public String salvarUsuario() {
 		crudService.create(usuario);
 		//MensagensUtil.addInfo("Usuário cadastrado com sucesso.");
 		
 		usuario = new Usuario();
 		
-		//return "../home/home?faces-redirect=true";
+		return "../home/home?faces-redirect=true";
 	}
 	
 	public void atualizarUsuario() {

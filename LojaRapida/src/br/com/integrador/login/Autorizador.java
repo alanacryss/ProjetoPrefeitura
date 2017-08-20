@@ -17,9 +17,12 @@ public class Autorizador implements PhaseListener{
 
 		FacesContext context = event.getFacesContext();
 		
-		System.out.println("Entrou no autorizador");
 		
 		if ("/login/indexLogin.xhtml".equals(context.getViewRoot().getViewId())) {
+			return;
+		}
+		
+		if ("/cadastro/cadastroUsuario.xhtml".equals(context.getViewRoot().getViewId())) {
 			return;
 		}
 		
