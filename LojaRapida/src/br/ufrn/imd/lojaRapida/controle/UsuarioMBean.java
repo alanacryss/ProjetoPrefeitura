@@ -3,8 +3,6 @@ package br.ufrn.imd.lojaRapida.controle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
-import org.hibernate.loader.criteria.CriteriaJoinWalker;
-
 import br.ufrn.imd.lojaRapida.dominio.Usuario;
 import br.ufrn.imd.lojaRapida.negocio.CrudService;
 
@@ -20,7 +18,11 @@ public class UsuarioMBean {
 	
 	public void salvarUsuario() {
 		crudService.create(usuario);
+		//MensagensUtil.addInfo("Usuário cadastrado com sucesso.");
+		
 		usuario = new Usuario();
+		
+		//return "../home/home?faces-redirect=true";
 	}
 	
 	public void atualizarUsuario() {

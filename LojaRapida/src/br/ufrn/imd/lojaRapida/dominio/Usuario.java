@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import br.ufrn.imd.lojaRapida.dao.PersistDB;
 
 @Entity
+//@NamedQuery(name = "Usuario.findUser", query = "SELECT u FROM Usuario u WHERE u.email = :email AND u.senha = :senha")
 public class Usuario implements PersistDB {
 
 	@Id
@@ -60,11 +61,12 @@ public class Usuario implements PersistDB {
 	@Override
 	public int getId() {
 		// TODO Auto-generated method stub
-		return 0;
+		return id;
 	}
 	@Override
 	public void setId(int id) {
 		// TODO Auto-generated method stub
+		this.id = id;
 		
 	}
 	
