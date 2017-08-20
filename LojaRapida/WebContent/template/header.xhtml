@@ -43,13 +43,13 @@
 			<h:form>
 
 				<p:menubar>
-					<p:menuitem value="Home" icon="ui-icon-home" url="home.xhtml" />
+					<p:menuitem value="Home" icon="ui-icon-home" url="#{redirecionadorMBean.home()}" />
 					<p:menuitem value="Documentos" icon="ui-icon-home"
-						url="../cadastro/listaDoc.xhtml" />
+						url="#{redirecionadorMBean.documentos()}" />
 
 					<f:facet name="options">
 						<p:commandButton value="Logout" icon="ui-icon-extlink"
-							action="#{usuarioController.logout}" />
+							action="#{loginMBean.efetuaLogout()}" />
 					</f:facet>
 				</p:menubar>
 
