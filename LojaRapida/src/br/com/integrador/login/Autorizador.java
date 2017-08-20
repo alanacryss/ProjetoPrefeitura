@@ -19,13 +19,13 @@ public class Autorizador implements PhaseListener{
 		
 		System.out.println("Entrou no autorizador");
 		
-		if ("/login.xhtml".equals(context.getViewRoot().getViewId())) {
+		if ("/login/indexLogin.xhtml".equals(context.getViewRoot().getViewId())) {
 			return;
 		}
 		
 		ELContext elContext = context.getELContext();
 		ELResolver elResolver = context.getApplication().getELResolver();
-		UsuarioLogadoMBean usuarioLogado = (UsuarioLogadoMBean) elResolver.getValue(elContext, null, "usuarioLogadoBean");
+		UsuarioLogadoMBean usuarioLogado = (UsuarioLogadoMBean) elResolver.getValue(elContext, null, "usuarioLogadoMBean");
 
 		// Usando o usuarioLogado que foi injetado
 		if (!usuarioLogado.isLogado()) {
