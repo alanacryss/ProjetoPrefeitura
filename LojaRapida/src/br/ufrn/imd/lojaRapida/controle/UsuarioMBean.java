@@ -16,7 +16,16 @@ public class UsuarioMBean {
 	private CrudService crudService;
 	private Usuario usuario = new Usuario();
 	private int id;
+	private Integer index = 0;
+	// private int id;
 	
+	public Integer getIndex() {
+		return index;
+	}
+	
+	public void setIndex(Integer index) {
+		this.index = index;
+	}
 	
 	public String salvarUsuario() {
 		crudService.create(usuario);
@@ -27,8 +36,8 @@ public class UsuarioMBean {
 		
 		
 		usuario = new Usuario();
-		
-		return "../home/home?faces-redirect=true";
+		this.index = 1;
+		return "/faces/login/indexLogin?faces-redirect=true";
 	}
 	
 	public void atualizarUsuario() {

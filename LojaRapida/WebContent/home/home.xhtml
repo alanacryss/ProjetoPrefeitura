@@ -16,15 +16,20 @@
 		<div class="row" align="center">
 			<h3>Bem Vindo ao SisDoc</h3>
 
-			<h:form>
-				<h:commandButton
-					action="/cadastro/cadastroDocumento?faces-redirect=true"
-					value="Novo Documento" style="height:50px" />
-
-				<h:commandButton
-					action="/cadastro/cadastroDocumentoRecebido?faces-redirect=true"
-					value="Novo Documento Recebido" style="height:50px" />
-			</h:form>
+			<div class="row">
+				<h:form>
+					<div class="col s2 offset-s4">
+						<h:commandButton
+							action="/cadastro/cadastroDocumento?faces-redirect=true"
+							value="Novo Documento" style="height:50px" />
+					</div>
+					<div class="col s2">
+						<h:commandButton
+							action="/cadastro/cadastroDocumentoRecebido?faces-redirect=true"
+							value="Novo Documento Recebido" style="height:50px" />
+					</div>
+				</h:form>
+			</div>
 
 			<h4>Sistema de Gerenciamento de Documentos</h4>
 			<h4>Prefeitura Municipal de Rodolfo Fernandes</h4>
