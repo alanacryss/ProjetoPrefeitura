@@ -16,4 +16,5 @@ public enum TipoDocumento {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 }

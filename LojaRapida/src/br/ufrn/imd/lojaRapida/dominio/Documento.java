@@ -8,8 +8,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import br.ufrn.imd.lojaRapida.dao.PersistDB;
 import br.com.integrador.enums.TipoDocumento;
+import br.ufrn.imd.lojaRapida.dao.PersistDB;
 
 @Entity
 public class Documento implements PersistDB {
@@ -21,9 +21,29 @@ public class Documento implements PersistDB {
 	
 	@Enumerated(EnumType.STRING)
 	private TipoDocumento tipo;
+	
+//	@Column(name="numeracao")
+//	private HashMap<String, Integer> numeracao;
+	
+//	@OneToMany
+//	private br.com.integrador.interfaces.TipoDocumento tipos;
 	private Date data;
 	private String assunto;
+	
+	private Integer numeracao;
+	
+//	@Column(name="ano")
+//	private String ano;
+	
 
+//	public HashMap<String, Integer> getNumeracao() {
+//		return numeracao;
+//	}
+//	
+//	public void setNumeracao(HashMap<String, Integer> numeracao) {
+//		this.numeracao = numeracao;
+//	}	
+	
 	@Override
 	public int getId() {
 		return id;
@@ -32,6 +52,14 @@ public class Documento implements PersistDB {
 	@Override
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public Integer getNumeracao() {
+		return numeracao;
+	}
+	
+	public void setNumeracao(Integer numeracao) {
+		this.numeracao = numeracao;
 	}
 
 	public String getTitulo() {
@@ -47,6 +75,7 @@ public class Documento implements PersistDB {
 	}
 
 	public void setTipo(TipoDocumento tipo) {
+		
 		this.tipo = tipo;
 	}
 

@@ -29,7 +29,19 @@ public class DocumentoMBean {
 	//private int id;
 	
 	public void salvarDoc() {
-		crudService.create(doc);
+		
+		if(docService.verificarDisponibilidadePorAno(doc.getData().getYear(), doc.getTipo(), doc.getNumeracao())){
+			crudService.create(doc);
+			
+			MensagensUtil.addWarn("Documento salvo");
+			
+			doc = new Documento();
+			
+			return;
+		}
+		
+		MensagensUtil.addError("Numeração já usada!");
+		
 		doc = new Documento();
 	}
 	

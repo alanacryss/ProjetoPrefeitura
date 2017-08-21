@@ -40,6 +40,14 @@
 											value="#{documentoMBean.doc.titulo}" required="true"
 											requiredMessage="Digite o título do documento." />
 									</div>
+									
+									<div class="col s6">
+										<h:outputText value="Número: " />
+										<h:inputText id="txtNumero"
+											value="#{documentoMBean.doc.numeracao}" required="true"
+											requiredMessage="Digite o número do documento." />
+									</div>
+									
 									<div class="col s6">
 										<h:outputText value="Data do documento: " />
 										<p:calendar id="txtData" value="#{documentoMBean.doc.data}"
