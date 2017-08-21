@@ -21,7 +21,7 @@ public class DocumentoDetalheMBean {
 	public String selecionar(Documento doc) {
 		System.out.println(doc);
 		this.doc = doc;
-		return "/admin/documentoDetalhe";
+		return "/cadastro/documentoDetalhe";
 	}
 	
 	public String selecionar2(Documento doc) {
@@ -34,7 +34,7 @@ public class DocumentoDetalheMBean {
 		DocumentoDAO dao = new DocumentoDAO();
 		this.doc = dao.findByPrimaryKey(idDoc);
 		dao.close();
-		return "/admin/documentoDetalhe";
+		return "/cadastro/documentoDetalhe";
 	}
 
 }
