@@ -12,71 +12,107 @@
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<div class="container">
-			<div class="row">
-				<h3>Cadastro de documento</h3>
+
+		<div class="row">
+
+			<div class="col s3" align="left">
+				<h:outputText value="Números disponíveis: " />
+				<br />
+				<h:outputText value="Ofício: " />
+				<h:outputText
+					value="#{documentoMBean.getNumeracao(documentoMBean.tipos[0])}" />
+				<br />
+				<h:outputText value="Edital: " />
+				<h:outputText
+					value="#{documentoMBean.getNumeracao(documentoMBean.tipos[1])}" />
+				<br />
+				<h:outputText value="Memorando: " />
+				<h:outputText
+					value="#{documentoMBean.getNumeracao(documentoMBean.tipos[2])}" />
+				<br />
+				<h:outputText value="Portaria: " />
+				<h:outputText
+					value="#{documentoMBean.getNumeracao(documentoMBean.tipos[3])}" />
+				<br />
 			</div>
 
-			<div class="row">
-				<div class="col s12">
-					<p:panel id="pnlAutenticacao">
-						<h:panelGrid columns="2">
-							<h:form>
-							<h:inputHidden value="#{documentoMBean.doc.id}" />
-								<div class="row">
-									<div class="col s6">
-										<h:outputText value="Tipo do documento: " />
-										<p:selectOneMenu id="doc" value="#{documentoMBean.doc.tipo}" style="width:200px">
-											<f:selectItem itemLabel="Escolha" itemValue=""
-												itemDisabled="true" />
-											<f:selectItems value="#{documentoMBean.tipos}" var="d" itemValue="#{d}" itemLabel="#{d.nome}" />
-										</p:selectOneMenu>
+			<div class="container">
+				<div class="row">
+					<h3>Cadastro de documento</h3>
+				</div>
+
+				<!-- 			<div class="col s6"> -->
+				<!-- 				<div class="col s6"> -->
+				<!-- 					<h:outputText value="Número disponível: " /> -->
+				<!-- 					<h:outputText value="" /> -->
+				<!-- 				</div> -->
+
+				<div class="row">
+
+					<div class="col s12">
+
+						<p:panel id="pnlAutenticacao">
+							<h:panelGrid columns="2">
+								<h:form>
+									<h:inputHidden value="#{documentoMBean.doc.id}" />
+									<div class="row">
+										<div class="col s6">
+											<h:outputText value="Tipo do documento: " />
+											<p:selectOneMenu id="doc" value="#{documentoMBean.doc.tipo}"
+												style="width:200px">
+												<f:selectItem itemLabel="Escolha" itemValue=""
+													itemDisabled="true" />
+												<f:selectItems value="#{documentoMBean.tipos}" var="d"
+													itemValue="#{d}" itemLabel="#{d.nome}" />
+											</p:selectOneMenu>
+										</div>
 									</div>
-								</div>
-								<div class="row">
-									<div class="col s6">
-										<h:outputText value="Título: " />
-										<h:inputText id="txtTitulo"
-											value="#{documentoMBean.doc.titulo}" required="true"
-											requiredMessage="Digite o título do documento." />
+									<div class="row">
+										<div class="col s6">
+											<h:outputText value="Título: " />
+											<h:inputText id="txtTitulo"
+												value="#{documentoMBean.doc.titulo}" required="true"
+												requiredMessage="Digite o título do documento." />
+										</div>
+
+										<div class="col s6">
+											<h:outputText value="Número: " />
+											<h:inputText id="txtNumero"
+												value="#{documentoMBean.doc.numeracao}" required="true"
+												requiredMessage="Digite o número do documento." />
+										</div>
+
+										<div class="col s6">
+											<h:outputText value="Data do documento: " />
+											<p:calendar id="txtData" value="#{documentoMBean.doc.data}"
+												required="true" requiredMessage="Escolha uma data." />
+										</div>
 									</div>
-									
-									<div class="col s6">
-										<h:outputText value="Número: " />
-										<h:inputText id="txtNumero"
-											value="#{documentoMBean.doc.numeracao}" required="true"
-											requiredMessage="Digite o número do documento." />
+									<div class="row">
+										<div class="col s6">
+											<h:outputText value="Descrição: " />
+											<p:inputTextarea id="txtDescricao"
+												value="#{documentoMBean.doc.assunto}" required="true"
+												requiredMessage="Digite o assunto do documento." />
+										</div>
 									</div>
-									
-									<div class="col s6">
-										<h:outputText value="Data do documento: " />
-										<p:calendar id="txtData" value="#{documentoMBean.doc.data}"
-											required="true" requiredMessage="Escolha uma data." />
+									<h:inputHidden />
+									<div class="row">
+										<div class="col s2">
+											<h:commandButton value="Cancelar" />
+										</div>
+										<div class="col s2 offset-s8">
+											<h:commandButton value="Cadastrar"
+												action="#{documentoMBean.salvarDoc()}" />
+										</div>
 									</div>
-								</div>
-								<div class="row">
-									<div class="col s6">
-										<h:outputText value="Descrição: " />
-										<p:inputTextarea id="txtDescricao"
-											value="#{documentoMBean.doc.assunto}" required="true"
-											requiredMessage="Digite o assunto do documento." />
-									</div>
-								</div>
-								<h:inputHidden />
-								<div class="row">
-									<div class="col s2">
-										<h:commandButton value="Cancelar" />
-									</div>
-									<div class="col s2 offset-s8">
-										<h:commandButton value="Cadastrar"
-											action="#{documentoMBean.salvarDoc()}" />
-									</div>
-								</div>
-							</h:form>
-						</h:panelGrid>
-					</p:panel>
+								</h:form>
+							</h:panelGrid>
+						</p:panel>
+					</div>
 				</div>
 			</div>
 		</div>
+		<!-- 		</div> -->
 	</ui:define>
 </ui:composition>

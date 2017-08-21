@@ -1,5 +1,7 @@
 package br.ufrn.imd.lojaRapida.controle;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -8,7 +10,6 @@ import javax.faces.bean.ManagedBean;
 import org.primefaces.component.tabview.TabView;
 
 import br.com.integrador.enums.TipoDocumento;
-import br.ufrn.imd.lojaRapida.dao.DocumentoDAO;
 import br.ufrn.imd.lojaRapida.dominio.Documento;
 import br.ufrn.imd.lojaRapida.negocio.CrudService;
 import br.ufrn.imd.lojaRapida.negocio.DocumentoService;
@@ -33,7 +34,7 @@ public class DocumentoMBean {
 		if(docService.verificarDisponibilidadePorAno(doc.getData().getYear(), doc.getTipo(), doc.getNumeracao())){
 			crudService.create(doc);
 			
-			MensagensUtil.addWarn("Documento salvo");
+			MensagensUtil.addInfo("Documento salvo");
 			
 			doc = new Documento();
 			
@@ -43,6 +44,11 @@ public class DocumentoMBean {
 		MensagensUtil.addError("Numeração já usada!");
 		
 		doc = new Documento();
+	}
+	
+	public Integer getNumeracao(TipoDocumento tipo){
+		
+		return docService.getNumeroDisponivel(new Date().getYear(), tipo);
 	}
 	
 	public String atualizarDoc(Documento documento) {
