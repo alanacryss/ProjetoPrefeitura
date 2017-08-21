@@ -43,9 +43,12 @@
 			<h:form>
 
 				<p:menubar>
-					<p:menuitem value="Home" icon="ui-icon-home" url="#{redirecionadorMBean.home()}" />
+					<p:menuitem value="Home" icon="ui-icon-home"
+						url="#{redirecionadorMBean.home()}" />
 					<p:menuitem value="Documentos" icon="ui-icon-home"
 						url="#{redirecionadorMBean.documentos()}" />
+					<p:menuitem value="Documentos Recebidos" icon="ui-icon-home"
+						url="#{redirecionadorMBean.documentosRecebidos()}" />
 
 					<f:facet name="options">
 						<p:commandButton value="Logout" icon="ui-icon-extlink"

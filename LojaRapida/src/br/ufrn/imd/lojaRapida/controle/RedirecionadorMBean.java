@@ -42,6 +42,11 @@ public class RedirecionadorMBean implements Serializable{
 		this.index = 0;
 		return "../cadastro/listaDoc.xhtml?faces-redirect=true";
 	}
+	
+	public String documentosRecebidos() {
+		this.index = 0;
+		return "../cadastro/listDocRecebidos.xhtml?faces-redirect=true";
+	}
 
 	public void logout() {
 		this.index = 0;

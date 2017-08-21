@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/header.xhtml">
+
+	<ui:define name="titulo">
+		Documento
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<div class="row">
+			<h:form id="cadDoc">
+				<p:fieldset id="documentosField" legend="Documentos Recebidos"
+					style="margin-top:20px">
+					<h:form>
+						<p:dataTable id="dtLista" value="#{documentoRecebidoMBean.listaDocumentoRecebido}"
+							var="document" styleClass="listagem" paginator="true"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rows="10">
+							<f:facet name="header">Meus documentos</f:facet>
+							<h:inputHidden value="#{document.id}" />
+							<p:column headerText="Nº" width="80">
+								<h:outputText value="#{document.numeracao} / #{document.ano}" />
+							</p:column>
+
+							<p:column headerText="Título">
+								<h:outputText value="#{document.titulo}" />
+							</p:column>
+
+							<p:column headerText="Tipo" width="200">
+								<h:outputText value="#{document.tipo}" />
+							</p:column>
+
+							<p:column headerText="Data de Recebimento" width="200">
+								<h:outputText value="#{document.data}">
+									<f:convertDateTime pattern="dd/MM/yyyy" type="date" />
+								</h:outputText>
+							</p:column>
+							
+							<p:column headerText="Prazo" width="200">
+								<h:outputText value="#{document.prazo}">
+									<f:convertDateTime pattern="dd/MM/yyyy" type="date" />
+								</h:outputText>
+							</p:column>
+
+							<p:column headerText="Editar" width="80">
+								<p:commandButton action="#{documentoRecebidoMBean.atualizarDoc(document)}"
+									icon="ui-icon-pencil" update="dtLista , msgAjax">
+								</p:commandButton>
+							</p:column>
+
+							<p:column styleClass="action" width="80">
+								<f:facet name="header">
+									<h:outputText value="Deletar" />
+								</f:facet>
+								<p:commandButton action="#{documentoRecebidoMBean.removerDoc(document.id)}"
+									icon="ui-icon-trash" update="dtLista , msgAjax">
+									<p:confirm header="Confirmation" message="Deseja Deletar?"
+										icon="ui-icon-alert" />
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</p:fieldset>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
