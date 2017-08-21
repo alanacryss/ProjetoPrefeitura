@@ -1,6 +1,5 @@
 package br.ufrn.imd.lojaRapida.controle;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,9 +30,16 @@ public class DocumentoMBean {
 
 	public void salvarDoc() {
 
-		crudService.create(doc);
+		if (docService.verificarDisponibilidadePorAno(doc.getData().getYear(), doc.getTipo(), doc.getNumeracao())) {
+			crudService.create(doc);
 
-		MensagensUtil.addInfo("Documento salvo");
+			MensagensUtil.addInfo("Documento salvo");
+
+			doc = new Documento();
+
+		}
+
+		MensagensUtil.addError("Numeração já usada!");
 
 		doc = new Documento();
 	}

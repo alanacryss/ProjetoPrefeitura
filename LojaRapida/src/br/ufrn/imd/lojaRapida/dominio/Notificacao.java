@@ -1,5 +1,6 @@
 package br.ufrn.imd.lojaRapida.dominio;
 
+import javax.ejb.ScheduleExpression;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,6 +30,8 @@ public class Notificacao implements PersistDB {
 	}
 	
 	public void setPrioridade(PrioridadeNotificacao prioridade) {
+		
+		
 		this.prioridade = prioridade;
 	}
 
