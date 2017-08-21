@@ -24,7 +24,7 @@
 							<f:facet name="header">Meus documentos</f:facet>
 							<h:inputHidden value="#{document.id}" />
 							<p:column headerText="Nº" width="80">
-								<h:outputText value="#{document.id}" />
+								<h:outputText value="#{document.numeracao} / #{document.ano}" />
 							</p:column>
 
 							<p:column headerText="Título">

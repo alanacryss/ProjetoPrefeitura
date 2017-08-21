@@ -16,56 +16,48 @@ import br.ufrn.imd.lojaRapida.negocio.DocumentoService;
 
 @ManagedBean
 public class DocumentoMBean {
-	
+
 	@EJB
 	private CrudService crudService;
-	
+
 	@EJB
 	private DocumentoService docService;
-	
+
 	private Documento doc = new Documento();
 	private TipoDocumento[] tipos;
 	private List<Documento> documentos;
 	private TabView tabView;
-	//private int id;
-	
+	// private int id;
+
 	public void salvarDoc() {
-		
-		if(docService.verificarDisponibilidadePorAno(doc.getData().getYear(), doc.getTipo(), doc.getNumeracao())){
-			crudService.create(doc);
-			
-			MensagensUtil.addInfo("Documento salvo");
-			
-			doc = new Documento();
-			
-			return;
-		}
-		
-		MensagensUtil.addError("Numeração já usada!");
-		
+
+		crudService.create(doc);
+
+		MensagensUtil.addInfo("Documento salvo");
+
 		doc = new Documento();
 	}
-	
-	public Integer getNumeracao(TipoDocumento tipo){
-		
+
+	public Integer getNumeracao(TipoDocumento tipo) {
+
 		return docService.getNumeroDisponivel(new Date().getYear(), tipo);
 	}
-	
+
 	public String atualizarDoc(Documento documento) {
 		doc = documento;
-		//docService.atualiza(id);
-		//doc = new Documento();
+		// docService.atualiza(id);
+		// doc = new Documento();
 		return "/cadastro/cadastroDocumento";
 	}
-	
+
 	public List<Documento> getListaDocumento() {
-		return docService.getAllDocumentos();	
+		return docService.getAllDocumentos();
 	}
-	
+
 	public String removerDoc(int id) {
 		docService.removeDoc(id);
 		doc = new Documento();
-		
+
 		return null;
 	}
 
@@ -100,7 +92,5 @@ public class DocumentoMBean {
 	public void setTipos(TipoDocumento[] tipos) {
 		this.tipos = tipos;
 	}
-	
-	
-	
+
 }

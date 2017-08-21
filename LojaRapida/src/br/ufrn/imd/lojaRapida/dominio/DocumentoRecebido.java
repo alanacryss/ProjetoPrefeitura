@@ -12,7 +12,7 @@ import br.com.integrador.enums.TipoDocumento;
 import br.ufrn.imd.lojaRapida.dao.PersistDB;
 
 @Entity
-public class Documento implements PersistDB {
+public class DocumentoRecebido implements PersistDB {
 	
 	@Id
 	@GeneratedValue
@@ -22,27 +22,12 @@ public class Documento implements PersistDB {
 	@Enumerated(EnumType.STRING)
 	private TipoDocumento tipo;
 	
-//	@Column(name="numeracao")
-//	private HashMap<String, Integer> numeracao;
-	
-//	@OneToMany
-//	private br.com.integrador.interfaces.TipoDocumento tipos;
 	private Date data;
+	private Date prazo;
+	
 	private String assunto;
 	
 	private Integer numeracao;
-	
-//	@Column(name="ano")
-//	private String ano;
-	
-
-//	public HashMap<String, Integer> getNumeracao() {
-//		return numeracao;
-//	}
-//	
-//	public void setNumeracao(HashMap<String, Integer> numeracao) {
-//		this.numeracao = numeracao;
-//	}	
 	
 	@Override
 	public int getId() {
@@ -52,6 +37,14 @@ public class Documento implements PersistDB {
 	@Override
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public Date getPrazo() {
+		return prazo;
+	}
+	
+	public void setPrazo(Date prazo) {
+		this.prazo = prazo;
 	}
 	
 	public String getAno(){

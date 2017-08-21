@@ -15,10 +15,9 @@
 		<class>br.ufrn.imd.lojaRapida.dominio.Produto</class>
 		<class>br.ufrn.imd.lojaRapida.dominio.Venda</class>
 		<class>br.ufrn.imd.lojaRapida.dominio.Documento</class>
+		<class>br.ufrn.imd.lojaRapida.dominio.DocumentoRecebido</class>
 		<class>br.ufrn.imd.lojaRapida.dominio.Notificacao</class>
 		<class>br.ufrn.imd.lojaRapida.dominio.Usuario</class>
-		<class>br.ufrn.imd.lojaRapida.dominio.Ano</class>
-		<class>br.ufrn.imd.lojaRapida.dominio.Oficio</class>
 		<shared-cache-mode>NONE</shared-cache-mode>
 		<properties>
 

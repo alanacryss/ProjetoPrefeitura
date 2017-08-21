@@ -6,32 +6,32 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import br.com.integrador.enums.TipoDocumento;
-import br.ufrn.imd.lojaRapida.dao.DocumentoDAO;
-import br.ufrn.imd.lojaRapida.dominio.Documento;
+import br.ufrn.imd.lojaRapida.dao.DocumentoRecebidoDAO;
+import br.ufrn.imd.lojaRapida.dominio.DocumentoRecebido;
 
 @Stateless
-public class DocumentoService {
+public class DocumentoRecebidoService {
 
 	@EJB
-	private DocumentoDAO dao;
+	private DocumentoRecebidoDAO dao;
 
-	public List<Documento> getAllDocumentos() {
+	public List<DocumentoRecebido> getAllDocumentos() {
 		return dao.findAll();
 	}
 
 	public void removeDoc(int id) {
-		Documento d = dao.findByPrimaryKey(id);
+		DocumentoRecebido d = dao.findByPrimaryKey(id);
 		dao.delete(d);
 	}
 
 	public void atualiza(int id) {
-		Documento d = dao.findByPrimaryKey(id);
+		DocumentoRecebido d = dao.findByPrimaryKey(id);
 		dao.update(d);
 	}
 
 	public boolean verificarDisponibilidadePorAno(int ano, TipoDocumento tipo, Integer n) {
-		List<Documento> list = dao.findAll();
-		for (Documento d : list)
+		List<DocumentoRecebido> list = dao.findAll();
+		for (DocumentoRecebido d : list)
 			if (ano == d.getData().getYear() && tipo.compareTo(d.getTipo()) == 0 && n.equals(d.getNumeracao()))
 				return false;
 
@@ -39,9 +39,9 @@ public class DocumentoService {
 	}
 
 	public Integer getNumeroDisponivel(int ano, TipoDocumento tipo) {
-		List<Documento> list = dao.findAll();
+		List<DocumentoRecebido> list = dao.findAll();
 		Integer n = new Integer(1);
-		for (Documento d : list){
+		for (DocumentoRecebido d : list){
 			//System.out.println(ano == d.getData());
 			if (ano == d.getData().getYear() && tipo.compareTo(d.getTipo()) == 0)
 				n = new Integer(d.getNumeracao() + 1);
@@ -49,5 +49,4 @@ public class DocumentoService {
 		
 		return n;
 	}
-
 }
