@@ -41,8 +41,18 @@
 								</h:outputText>
 							</p:column>
 
+							<p:column styleClass="action">
+
+								<f:facet name="header">
+									<h:outputText value="Visualizar" />
+								</f:facet>
+								<p:commandButton action="#{documentoDetalheMBean.selecionar(document)}"
+									icon="ui-icon-zoomout" ajax="false" />
+							</p:column>
+
 							<p:column headerText="Editar" width="80">
-								<p:commandButton action="#{documentoMBean.atualizarDoc(document)}"
+								<p:commandButton
+									action="#{documentoMBean.atualizarDoc(document)}"
 									icon="ui-icon-pencil" update="dtLista , msgAjax">
 								</p:commandButton>
 							</p:column>
@@ -51,7 +61,8 @@
 								<f:facet name="header">
 									<h:outputText value="Deletar" />
 								</f:facet>
-								<p:commandButton action="#{documentoMBean.removerDoc(document.id)}"
+								<p:commandButton
+									action="#{documentoMBean.removerDoc(document.id)}"
 									icon="ui-icon-trash" update="dtLista , msgAjax">
 									<p:confirm header="Confirmation" message="Deseja Deletar?"
 										icon="ui-icon-alert" />
